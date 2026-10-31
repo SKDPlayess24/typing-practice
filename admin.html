@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paragraph Admin - Touch Type Trainer</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html { color-scheme: light; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+:root {
+  --bg: #eceff3; --surface: #fafbfc; --surface-2: #f0f3f6; --ink: #15202b; --muted: #5b6978; --line: #d3dae2;
+  --accent: #0b6e7f; --accent-ink: #ffffff; --accent-soft: #d7eef2; --good: #1f7a3d; --bad: #c0282d; --bad-soft: #fbdcdc;
+  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f151b; --surface: #16202a; --surface-2: #1c2833; --ink: #e7eef5; --muted: #93a1af; --line: #2a3744;
+    --accent: #4cc3d6; --accent-ink: #06222a; --accent-soft: #17343c; --good: #5fd08a; --bad: #ff7b7b; --bad-soft: #4a2227;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f151b; --surface: #16202a; --surface-2: #1c2833; --ink: #e7eef5; --muted: #93a1af; --line: #2a3744;
+  --accent: #4cc3d6; --accent-ink: #06222a; --accent-soft: #17343c; --good: #5fd08a; --bad: #ff7b7b; --bad-soft: #4a2227;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5;
+  padding-block: 20px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.app { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.1rem); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+h2 { font-family: var(--display); font-weight: 800; font-size: 1.25rem; margin: 0; letter-spacing: -0.01em; }
+.top { display: flex; justify-content: space-between; align-items: flex-end; gap: 8px 20px; flex-wrap: wrap; }
+.top p { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; max-width: 60ch; }
+a { color: var(--accent); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.meta { margin: 0; font-size: 0.88rem; color: var(--muted); }
+.msg { margin: 0; min-height: 1.3em; font-size: 0.92rem; color: var(--bad); overflow-wrap: anywhere; }
+.msg.ok { color: var(--good); }
+.pill { display: inline-block; font-size: 0.78rem; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+button, select, input[type="text"], input[type="password"], textarea { font: inherit; color: var(--ink); }
+.btn { font-size: 0.92rem; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; cursor: pointer; min-height: 40px; }
+.btn:hover:not(:disabled) { border-color: var(--accent); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.btn.danger { color: var(--bad); }
+.btn.small { min-height: 34px; padding: 4px 12px; font-size: 0.85rem; }
+.btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.btn:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+input[type="text"], input[type="password"], select, textarea { width: 100%; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+textarea { min-height: 150px; resize: vertical; font-family: var(--mono); font-size: 0.95rem; line-height: 1.6; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
+.list .info { min-width: 0; flex: 1; }
+.list .info strong { display: block; overflow-wrap: anywhere; }
+.list .info small { color: var(--muted); }
+.list .info p { margin: 2px 0 0; color: var(--muted); font-size: 0.88rem; overflow-wrap: anywhere; }
+.list .btns { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; flex: none; }
+details { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; background: var(--surface-2); }
+summary { cursor: pointer; font-weight: 600; }
+details ol { margin: 8px 0 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 4px; color: var(--muted); }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
+@media (max-width: 640px) {
+  .grid2, .grid3 { grid-template-columns: minmax(0, 1fr); }
+  .list li { flex-direction: column; }
+  .list .btns { justify-content: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <h1>Paragraph Admin</h1>
+      <p>Add, edit or delete the Easy, Medium and Hard paragraphs that every visitor sees. Changes go live when you publish.</p>
+    </div>
+    <a href="index.html">Open the typing site</a>
+  </header>
+
+  <section class="panel" aria-label="Status">
+    <div class="row"><span class="pill" id="dirtyPill" hidden>Unpublished changes</span><p class="meta" id="loadMsg">Loading your paragraphs...</p></div>
+    <div>
+      <label class="label" for="fileIn">Opened this page from your computer? Load paragraphs.json here</label>
+      <input type="file" id="fileIn" accept=".json,application/json">
+    </div>
+  </section>
+
+  <section class="panel" aria-label="Paragraphs">
+    <h2>Paragraphs</h2>
+    <div class="row" id="tabs" role="group" aria-label="Level"></div>
+    <ul class="list" id="list"></ul>
+  </section>
+
+  <section class="panel" aria-label="Add or edit a paragraph">
+    <h2 id="fHead">Add a paragraph</h2>
+    <div class="grid2">
+      <div>
+        <label class="label" for="fLevel">Level</label>
+        <select id="fLevel">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <div>
+        <label class="label" for="fTitle">Title (optional)</label>
+        <input type="text" id="fTitle" maxlength="60" autocomplete="off" placeholder="For example: Office email practice">
+      </div>
+    </div>
+    <div>
+      <label class="label" for="fText">Paragraph</label>
+      <textarea id="fText" placeholder="Type or paste the paragraph here (at least 20 characters)"></textarea>
+      <p class="meta" id="fCount">0 words, 0 characters</p>
+    </div>
+    <p class="msg" id="fMsg" role="status"></p>
+    <div class="row">
+      <button type="button" class="btn primary" id="fSave">Add paragraph</button>
+      <button type="button" class="btn" id="fCancel" hidden>Cancel editing</button>
+    </div>
+  </section>
+
+  <section class="panel" aria-label="Publish">
+    <h2>Publish to your website</h2>
+    <p class="meta">Adding a paragraph above only changes this page. Publish it so visitors see it. Choose one way.</p>
+
+    <h3 style="margin:0;font-size:1rem">A. Publish directly (fastest)</h3>
+    <div class="grid3">
+      <div><label class="label" for="ghOwner">GitHub username</label><input type="text" id="ghOwner" autocomplete="off"></div>
+      <div><label class="label" for="ghRepo">Repository</label><input type="text" id="ghRepo" value="typing-practice" autocomplete="off"></div>
+      <div><label class="label" for="ghBranch">Branch</label><input type="text" id="ghBranch" value="main" autocomplete="off"></div>
+    </div>
+    <div>
+      <label class="label" for="ghToken">GitHub token (kept only in this page unless you tick the box)</label>
+      <input type="password" id="ghToken" autocomplete="off">
+      <label class="meta" style="display:flex;gap:8px;align-items:center;margin-top:8px"><input type="checkbox" id="ghRemember"> Remember the token on this device (use only on your own computer)</label>
+    </div>
+    <details>
+      <summary>How to get a token (one time)</summary>
+      <ol>
+        <li>On GitHub, open your profile picture menu, then <b>Settings</b>.</li>
+        <li>At the bottom of the left menu choose <b>Developer settings</b>, then <b>Personal access tokens</b>, then <b>Fine-grained tokens</b>.</li>
+        <li>Click <b>Generate new token</b> and give it any name.</li>
+        <li>Under <b>Repository access</b> choose <b>Only select repositories</b> and pick <code>typing-practice</code>.</li>
+        <li>Under <b>Permissions</b>, open <b>Repository permissions</b> and set <b>Contents</b> to <b>Read and write</b>.</li>
+        <li>Generate the token, copy it and paste it above. Never share it with anyone.</li>
+      </ol>
+    </details>
+    <div class="row"><button type="button" class="btn primary" id="pubBtn">Publish to website</button></div>
+    <p class="msg" id="pubMsg" role="status"></p>
+
+    <h3 style="margin:8px 0 0;font-size:1rem">B. Download and upload yourself</h3>
+    <p class="meta">Download <code>paragraphs.json</code>, then on GitHub open your repository, choose <b>Add file</b>, <b>Upload files</b>, drop the file in and commit. It replaces the old one.</p>
+    <div class="row">
+      <button type="button" class="btn" id="dlBtn">Download paragraphs.json</button>
+      <button type="button" class="btn" id="cpBtn">Copy JSON</button>
+    </div>
+    <p class="msg" id="dlMsg" role="status"></p>
+  </section>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var LV = ['easy', 'medium', 'hard'];
+  var NAMES = { easy: 'Easy', medium: 'Medium', hard: 'Hard' };
+  var data = { easy: [], medium: [], hard: [] };
+  var view = 'easy', editing = null, pendingDel = null, dirty = false, loaded = false;
+  var STORE = 'touchtype.admin.v1';
+
+  function wc(s) { s = s.trim(); return s ? s.split(/\s+/).length : 0; }
+  function cleanText(s) {
+    var t = s.replace(/[‘’‛′]/g, "'").replace(/[“”‟″]/g, '"')
+      .replace(/[–—−]/g, '-').replace(/…/g, '...')
+      .replace(/[\s  -​ ]+/g, ' ').trim();
+    var bad = t.match(/[^\x20-\x7E]/g);
+    return { text: t.replace(/[^\x20-\x7E]/g, '').replace(/ {2,}/g, ' ').trim(), removed: bad ? bad.length : 0 };
+  }
+  function normalize(d) {
+    var out = { easy: [], medium: [], hard: [] };
+    LV.forEach(function (k) {
+      if (d && Array.isArray(d[k])) d[k].forEach(function (p) {
+        if (!p || typeof p.x !== 'string') return;
+        var c = cleanText(p.x).text;
+        if (c.length >= 20) out[k].push({ t: String(p.t || 'Paragraph').slice(0, 60), x: c });
+      });
+    });
+    return out;
+  }
+  function say(id, text, ok) { var m = $(id); m.textContent = text; m.className = 'msg' + (ok ? ' ok' : ''); }
+  function setDirty(v) { dirty = v; $('dirtyPill').hidden = !v; }
+  function totalCount() { return LV.reduce(function (n, k) { return n + data[k].length; }, 0); }
+
+  function renderTabs() {
+    var box = $('tabs'); box.innerHTML = '';
+    LV.forEach(function (k) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'btn'; b.dataset.level = k;
+      b.textContent = NAMES[k] + ' (' + data[k].length + ')';
+      b.setAttribute('aria-pressed', k === view ? 'true' : 'false');
+      box.appendChild(b);
+    });
+  }
+  function renderList() {
+    var ul = $('list'); ul.innerHTML = '';
+    var items = data[view];
+    if (!items.length) {
+      var e = document.createElement('li'); e.textContent = 'No paragraphs in this level yet.'; ul.appendChild(e); return;
+    }
+    items.forEach(function (p, i) {
+      var li = document.createElement('li');
+      var info = document.createElement('div'); info.className = 'info';
+      var st = document.createElement('strong'); st.textContent = p.t;
+      var sm = document.createElement('small'); sm.textContent = wc(p.x) + ' words';
+      var pr = document.createElement('p'); pr.textContent = p.x.length > 110 ? p.x.slice(0, 110) + '...' : p.x;
+      info.appendChild(st); info.appendChild(sm); info.appendChild(pr);
+      var btns = document.createElement('div'); btns.className = 'btns';
+      if (pendingDel && pendingDel.level === view && pendingDel.i === i) {
+        btns.innerHTML = '<button type="button" class="btn small danger" data-act="yes" data-i="' + i + '">Yes, delete</button>' +
+                         '<button type="button" class="btn small" data-act="no" data-i="' + i + '">Keep</button>';
+      } else {
+        btns.innerHTML = '<button type="button" class="btn small" data-act="edit" data-i="' + i + '">Edit</button>' +
+                         '<button type="button" class="btn small danger" data-act="del" data-i="' + i + '">Delete</button>';
+      }
+      li.appendChild(info); li.appendChild(btns); ul.appendChild(li);
+    });
+  }
+  function render() { renderTabs(); renderList(); }
+
+  function resetForm() {
+    editing = null;
+    $('fTitle').value = ''; $('fText').value = ''; $('fCount').textContent = '0 words, 0 characters';
+    $('fHead').textContent = 'Add a paragraph'; $('fSave').textContent = 'Add paragraph'; $('fCancel').hidden = true;
+    $('fLevel').value = view;
+  }
+  function saveParagraph() {
+    if (!loaded) { say('fMsg', 'Your paragraphs have not loaded yet. Load paragraphs.json first so nothing is overwritten.', false); return; }
+    var res = cleanText($('fText').value);
+    if (res.text.length < 20) { say('fMsg', 'The paragraph is too short. Add at least 20 characters.', false); return; }
+    if (res.text.length > 8000) { say('fMsg', 'The paragraph is too long. Keep it under 8,000 characters.', false); return; }
+    var title = cleanText($('fTitle').value).text.slice(0, 60);
+    if (!title) title = res.text.split(' ').slice(0, 4).join(' ') + '...';
+    var level = $('fLevel').value, item = { t: title, x: res.text };
+    if (editing) {
+      if (editing.level === level) { data[level][editing.i] = item; }
+      else { data[editing.level].splice(editing.i, 1); data[level].push(item); }
+    } else { data[level].push(item); }
+    var wasEdit = !!editing;
+    view = level; pendingDel = null; setDirty(true); resetForm(); render();
+    var extra = res.removed ? ' ' + res.removed + ' character(s) not on a standard keyboard were removed.' : '';
+    say('fMsg', (wasEdit ? 'Paragraph updated.' : 'Paragraph added.') + ' Now publish below so visitors see it.' + extra, true);
+  }
+
+  /* ---------- load ---------- */
+  function accept(d, msg) {
+    data = normalize(d); loaded = true; pendingDel = null; editing = null; setDirty(false); resetForm(); render();
+    $('loadMsg').textContent = msg + ' (' + totalCount() + ' paragraphs)';
+  }
+  function autoLoad() {
+    fetch('paragraphs.json?t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('missing'); return r.json(); })
+      .then(function (d) { accept(d, 'Loaded from your website.'); })
+      .catch(function () {
+        $('loadMsg').textContent = 'Could not load paragraphs.json automatically. Choose the file from your computer below.';
+      });
+  }
+  $('fileIn').addEventListener('change', function () {
+    var f = this.files && this.files[0]; if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      try { accept(JSON.parse(rd.result), 'Loaded from ' + f.name + '.'); }
+      catch (e) { $('loadMsg').textContent = 'That file is not a valid paragraphs.json.'; }
+    };
+    rd.readAsText(f);
+  });
+
+  /* ---------- output ---------- */
+  function currentJson() {
+    for (var i = 0; i < LV.length; i++) if (!data[LV[i]].length) return null;
+    return JSON.stringify(data, null, 2) + '\n';
+  }
+  function guard(msgId) {
+    if (!loaded) { say(msgId, 'Load your paragraphs first, so nothing is overwritten.', false); return null; }
+    var j = currentJson();
+    if (!j) { say(msgId, 'Each level needs at least one paragraph before you publish.', false); return null; }
+    return j;
+  }
+  function b64(s) {
+    var bytes = new TextEncoder().encode(s), bin = '';
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+  function ghError(status) {
+    if (status === 401) return 'GitHub did not accept the token. Check that it is copied fully and has not expired.';
+    if (status === 403) return 'The token is not allowed to write to this repository. Set Contents to Read and write.';
+    if (status === 404) return 'Repository not found. Check the username, repository name and branch, and that the token can access this repository.';
+    if (status === 409 || status === 422) return 'The file changed on GitHub while you were editing. Reload this page, then make your changes again.';
+    return 'GitHub returned error ' + status + '. Try again in a minute.';
+  }
+  function publish() {
+    var j = guard('pubMsg'); if (!j) return;
+    var owner = $('ghOwner').value.trim(), repo = $('ghRepo').value.trim(), br = $('ghBranch').value.trim() || 'main', tok = $('ghToken').value.trim();
+    if (!owner || !repo || !tok) { say('pubMsg', 'Fill in your GitHub username, the repository name and your token.', false); return; }
+    try {
+      localStorage.setItem(STORE, JSON.stringify({ owner: owner, repo: repo, branch: br, token: $('ghRemember').checked ? tok : '' }));
+    } catch (e) {}
+    var url = 'https://api.github.com/repos/' + encodeURIComponent(owner) + '/' + encodeURIComponent(repo) + '/contents/paragraphs.json';
+    var hdr = { 'Authorization': 'Bearer ' + tok, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
+    $('pubBtn').disabled = true; say('pubMsg', 'Publishing...', true);
+    fetch(url + '?ref=' + encodeURIComponent(br), { headers: hdr })
+      .then(function (r) {
+        if (r.status === 200) return r.json().then(function (o) { return o.sha; });
+        if (r.status === 404) return undefined;
+        throw new Error(ghError(r.status));
+      })
+      .then(function (sha) {
+        var body = { message: 'Update paragraphs from admin page', content: b64(j), branch: br };
+        if (sha) body.sha = sha;
+        return fetch(url, { method: 'PUT', headers: Object.assign({ 'Content-Type': 'application/json' }, hdr), body: JSON.stringify(body) });
+      })
+      .then(function (w) {
+        if (!w.ok) throw new Error(ghError(w.status));
+        setDirty(false);
+        say('pubMsg', 'Published. The website updates in about 1 to 2 minutes. Refresh the typing site after that.', true);
+      })
+      .catch(function (e) { say('pubMsg', e && e.message ? e.message : 'Could not reach GitHub. Check your internet connection.', false); })
+      .then(function () { $('pubBtn').disabled = false; });
+  }
+  function download() {
+    var j = guard('dlMsg'); if (!j) return;
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([j], { type: 'application/json' }));
+    a.download = 'paragraphs.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    say('dlMsg', 'Downloaded. Upload this file to your GitHub repository to replace the old one.', true);
+  }
+  function copyJson() {
+    var j = guard('dlMsg'); if (!j) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(j).then(function () { say('dlMsg', 'JSON copied.', true); },
+        function () { say('dlMsg', 'Copy was blocked by the browser. Use Download instead.', false); });
+    } else { say('dlMsg', 'Copy is not available here. Use Download instead.', false); }
+  }
+
+  /* ---------- events ---------- */
+  $('tabs').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    view = b.dataset.level; pendingDel = null; if (!editing) $('fLevel').value = view; render();
+  });
+  $('list').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var i = parseInt(b.dataset.i, 10), act = b.dataset.act;
+    if (act === 'edit') {
+      var p = data[view][i]; editing = { level: view, i: i };
+      $('fLevel').value = view; $('fTitle').value = p.t; $('fText').value = p.x;
+      $('fCount').textContent = wc(p.x) + ' words, ' + p.x.length + ' characters';
+      $('fHead').textContent = 'Edit paragraph'; $('fSave').textContent = 'Update paragraph'; $('fCancel').hidden = false;
+      say('fMsg', '', true); $('fText').scrollIntoView({ block: 'center' }); $('fText').focus();
+    } else if (act === 'del') {
+      pendingDel = { level: view, i: i }; renderList();
+    } else if (act === 'no') {
+      pendingDel = null; renderList();
+    } else if (act === 'yes') {
+      if (data[view].length <= 1) { pendingDel = null; renderList(); say('fMsg', 'Each level needs at least one paragraph. Add another one first, then delete this.', false); return; }
+      data[view].splice(i, 1); pendingDel = null; editing = null; resetForm(); setDirty(true); render();
+    }
+  });
+  $('fText').addEventListener('input', function () {
+    var v = this.value.trim(); $('fCount').textContent = wc(v) + ' words, ' + v.length + ' characters';
+  });
+  $('fSave').addEventListener('click', saveParagraph);
+  $('fCancel').addEventListener('click', function () { resetForm(); say('fMsg', '', true); });
+  $('pubBtn').addEventListener('click', publish);
+  $('dlBtn').addEventListener('click', download);
+  $('cpBtn').addEventListener('click', copyJson);
+  window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+  try {
+    var s = JSON.parse(localStorage.getItem(STORE) || 'null');
+    if (s) {
+      $('ghOwner').value = s.owner || ''; $('ghRepo').value = s.repo || 'typing-practice'; $('ghBranch').value = s.branch || 'main';
+      if (s.token) { $('ghToken').value = s.token; $('ghRemember').checked = true; }
+    }
+  } catch (e) {}
+
+  render(); autoLoad();
+})();
+</script>
+</body>
+</html>

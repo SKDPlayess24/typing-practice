@@ -316,7 +316,7 @@ figcaption { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
 
     <h3>How to use it</h3>
     <ol>
-      <li>Pick a level: Easy, Medium or Hard. Each level has 8 paragraphs, or choose Random to keep getting new ones.</li>
+      <li>Pick a level: Easy, Medium or Hard. Each level has many paragraphs, or choose Random to keep getting new ones.</li>
       <li>Pick a test length from 1 to 10 minutes.</li>
       <li>Click the text and start typing. The timer begins with your first key.</li>
       <li>Read your result: net WPM, accuracy, backspaces used, mistakes and a speed graph.</li>
@@ -761,7 +761,31 @@ figcaption { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
     var b = e.target.closest('button'); if (b) deleteParagraph(parseInt(b.dataset.i, 10));
   });
 
-  buildDurations(); fillPassages(); reset(true);
+  function loadShared() {
+    if (!window.fetch) return;
+    fetch('paragraphs.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('missing'); return r.json(); })
+      .then(function (d) {
+        var changed = false;
+        ['easy', 'medium', 'hard'].forEach(function (k) {
+          if (!d || !Array.isArray(d[k])) return;
+          var list = [];
+          d[k].forEach(function (p) {
+            if (!p || typeof p.x !== 'string') return;
+            var c = cleanText(p.x).text;
+            if (c.length >= 20) list.push({ t: String(p.t || 'Paragraph').slice(0, 60), x: c });
+          });
+          if (list.length) { LEVELS[k].list = list; changed = true; }
+        });
+        if (changed && status === 'idle' && typed === '') {
+          if (level !== 'mine' && chosen >= LEVELS[level].list.length) chosen = -1;
+          fillPassages(); reset(true);
+        }
+      })
+      .catch(function () {});
+  }
+
+  buildDurations(); fillPassages(); reset(true); loadShared();
 })();
 </script>
 

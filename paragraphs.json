@@ -1,0 +1,104 @@
+{
+  "easy": [
+    {
+      "t": "A Day at the Park",
+      "x": "The sun is out and the sky is blue. We go to the park after lunch. My sister runs to the swings and I run to the slide. Dad sits on a bench and reads his book. Mom brings cold water and some fruit. We play until the sky turns orange. Then we walk home, tired and happy, and we all sleep well that night."
+    },
+    {
+      "t": "My Small Garden",
+      "x": "I have a small garden behind my house. It has red flowers, green plants, and one big tree. Every morning I give the plants some water. Bees come to visit the flowers and birds sing in the tree. My grandmother taught me how to plant seeds. She says that a garden grows well when you give it time and love."
+    },
+    {
+      "t": "The Sunday Market",
+      "x": "On Sunday we go to the market near our home. There are many shops with fresh fruit, hot bread, and sweet tea. A man sells mangoes and he always smiles at us. I like to carry the bag of apples. Mom picks the best ones and pays the seller. We come back home before it gets too hot, and we eat together."
+    },
+    {
+      "t": "Rainy Morning",
+      "x": "It rained all night and the street is wet this morning. I take my red umbrella and walk to school. Small birds sit under the roof and wait for the rain to stop. The air smells fresh and cool. My friend meets me at the gate and we laugh about the puddles. A rainy day can feel quiet and nice."
+    },
+    {
+      "t": "My Best Friend",
+      "x": "Ravi is my best friend. We sit on the same bench in class and we share our lunch. He is good at math and I am good at drawing. When I feel sad, he tells me a funny story. After school we play cricket in the lane near his house. A good friend makes every day better, and I am lucky to have one."
+    },
+    {
+      "t": "The Little Cat",
+      "x": "A little cat came to our door last week. She was thin and cold, so we gave her warm milk. Now she sleeps on a soft cloth near the window. She likes to chase a ball of wool and jump on my bed. Every evening she sits on my lap and makes a soft sound. We call her Moti, and she is part of our family."
+    },
+    {
+      "t": "A Train Ride",
+      "x": "We take a train to my uncle's town every summer. I sit by the window and watch the fields go by. Cows, trees, and small houses pass quickly. A boy sells hot tea and snacks at each station. The train makes a loud sound and shakes a little, but I like it. After five hours, we see my uncle waiting with a big smile."
+    },
+    {
+      "t": "Before Bed",
+      "x": "A good night starts with a good plan. I put away my phone and wash my face. I read a few pages of a book and drink a glass of water. The room is dark and quiet. I close my eyes and think about the best part of the day. Sleep comes slowly, and I wake up fresh and ready for a new morning."
+    }
+  ],
+  "medium": [
+    {
+      "t": "Why Practice Matters",
+      "x": "Learning any skill takes patience, and typing is no exception. At first, your fingers search for every key, and each word feels slow. With regular practice, however, the keyboard becomes familiar, and your hands begin to move on their own. Ten minutes of focused effort each day is better than a single long session once a week. Keep your wrists relaxed, look at the screen, and let accuracy come before speed."
+    },
+    {
+      "t": "The City Library",
+      "x": "The old city library opens at nine every morning, and a small group of readers is always waiting at the door. Inside, the shelves reach almost to the ceiling, and the air smells of paper and dust. Students work quietly at long wooden tables while the librarian stamps returned books. Many people visit for the free internet, but most stay for the silence, which is hard to find anywhere else in the city."
+    },
+    {
+      "t": "Monsoon Season",
+      "x": "Every year, the monsoon arrives after weeks of heat, and the whole country seems to breathe again. Farmers prepare their fields, children splash through the streets, and the evening sky fills with dark clouds. Rivers rise quickly, so people are advised to stay away from the banks. Although the rain can cause problems for traffic and travel, it also brings the water that millions of families depend on."
+    },
+    {
+      "t": "Healthy Habits",
+      "x": "Good health is built from small choices repeated daily. Drinking enough water, walking for thirty minutes, and sleeping seven to eight hours can change how you feel within a few weeks. Fresh vegetables, whole grains, and fruit give the body steady energy, while too much sugar often leaves us tired. Nobody is perfect, but a person who keeps trying will usually see steady progress over time."
+    },
+    {
+      "t": "The Power of Reading",
+      "x": "Reading is one of the simplest ways to grow your vocabulary and sharpen your thinking. When you meet a new word in a story, you see how it works in a sentence, and it becomes easier to remember. Fiction builds imagination, while news and essays teach you to follow an argument. Even twenty pages a day adds up to more than twenty books in a single year."
+    },
+    {
+      "t": "A Small Bakery",
+      "x": "Meena started her bakery with two ovens, a borrowed table, and a recipe from her mother. In the first month she sold only a few loaves a day, but customers returned and told their neighbours. By the end of the year she had hired two helpers and moved to a bigger shop. She says the secret is simple: bake fresh bread every morning, treat people kindly, and never skip the small details."
+    },
+    {
+      "t": "Mobile Phones",
+      "x": "Mobile phones have changed the way we talk, shop, learn, and work. A single device can replace a camera, a map, a calendar, and a small library. Yet constant notifications make it difficult to focus, and many people check their screens more than a hundred times a day. Experts suggest setting quiet hours, turning off alerts you do not need, and spending more time with the people who are actually in the room."
+    },
+    {
+      "t": "City Traffic",
+      "x": "In a busy city, the journey to work can take longer than the work itself. Buses crawl along crowded roads, scooters weave between cars, and the sound of horns never stops. Planners say that better public transport, safer cycle paths, and staggered office hours could reduce the pressure. Until then, commuters carry a book, a bottle of water, and a good deal of patience."
+    }
+  ],
+  "hard": [
+    {
+      "t": "Climate Science",
+      "x": "Atmospheric concentrations of carbon dioxide have risen from roughly 280 parts per million before the Industrial Revolution to more than 420 today; consequently, global temperatures have increased by approximately 1.2 degrees Celsius. Researchers emphasize that mitigation, adaptation, and international cooperation are all indispensable. \"The window is narrowing,\" one report cautioned, \"but it has not closed.\" Decisions made this decade will shape the climate for centuries."
+    },
+    {
+      "t": "Economics Basics",
+      "x": "Inflation, defined as a sustained increase in the general price level, erodes purchasing power unless wages rise at the same pace. Central banks respond by adjusting interest rates: higher rates discourage borrowing and spending, whereas lower rates stimulate investment. However, these instruments are imprecise; a miscalculation can trigger unemployment, financial instability, or prolonged stagnation. Economists therefore debate (often fiercely) which trade-offs are acceptable."
+    },
+    {
+      "t": "The Human Brain",
+      "x": "The human brain contains approximately 86 billion neurons, each forming thousands of connections called synapses. Neuroscientists have discovered that learning physically reshapes these networks; repetition strengthens certain pathways, while neglected ones gradually weaken. This phenomenon, known as neuroplasticity, explains why consistent practice - whether of music, mathematics, or typing - produces measurable improvement, even in adulthood."
+    },
+    {
+      "t": "Space Exploration",
+      "x": "Since the launch of Sputnik 1 in 1957, humanity's understanding of the cosmos has expanded dramatically. Telescopes now detect galaxies whose light began its journey over 13 billion years ago, and robotic probes have sampled asteroids, photographed distant moons, and analysed the Martian soil. Skeptics ask whether such expenditure is justified; supporters answer that technological spin-offs, scientific discovery, and inspiration for future generations are priceless."
+    },
+    {
+      "t": "Cybersecurity",
+      "x": "Passwords remain the weakest link in most security systems. Experts recommend unique, lengthy passphrases (for example, four unrelated words with punctuation), together with two-factor authentication wherever it is available. Phishing messages, which impersonate banks or colleagues, succeed because they exploit urgency; therefore, verify every unexpected request through a separate channel. Remember: no legitimate organisation will ever ask for your PIN or one-time password."
+    },
+    {
+      "t": "A Court Hearing",
+      "x": "On Tuesday, the High Court adjourned the hearing until 14 March, citing the unavailability of two key witnesses. Counsel for the petitioner argued that the delay was \"unreasonable and prejudicial\"; the respondent, meanwhile, maintained that all procedural requirements had been satisfied. The presiding judge, noting the complexity of the evidence, directed both parties to submit written statements - not exceeding 5,000 words - within three weeks."
+    },
+    {
+      "t": "Renaissance Art",
+      "x": "The Renaissance, spanning roughly the 14th to the 17th centuries, transformed European art, architecture, and philosophy. Painters such as Leonardo da Vinci and Raphael mastered perspective, anatomy, and the subtle interplay of light and shadow. Patronage from wealthy families, notably the Medici of Florence, financed workshops where apprentices learned techniques that would influence generations. Their legacy endures in museums, cathedrals, and classrooms worldwide."
+    },
+    {
+      "t": "Global Supply Chains",
+      "x": "Modern manufacturing depends on intricate, interdependent supply chains that cross dozens of borders before a product reaches the consumer. A single smartphone, for instance, contains components from more than 40 countries. When a port closes, a shipment is delayed, or a pandemic disrupts production, the consequences cascade - shortages, rising costs, and frustrated customers. Resilience, rather than mere efficiency, has therefore become the new priority for logistics managers."
+    }
+  ]
+}
